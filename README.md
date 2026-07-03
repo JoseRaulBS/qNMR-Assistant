@@ -29,10 +29,13 @@
 
 Older versions: see the [Releases page](https://github.com/JoseRaulBS/qNMR-Assistant/releases).
 
-> **Unsigned binaries.** This is academic software and the executables are not
-> code-signed. Windows SmartScreen will ask for *"More info → Run anyway"* the
-> first time; macOS requires right-click → *Open* once. Intel-Mac users should
-> [run from source](#run-from-source).
+> **Windows security warnings.** The executables are not yet code-signed
+> (SignPath Foundation application in progress — see the
+> [code signing policy](docs/CODE_SIGNING.md)). Windows SmartScreen will ask
+> for *"More info → Run anyway"* the first time; systems with **Smart App
+> Control** enabled will block unsigned apps until signing is in place — run
+> from source there for now. macOS requires right-click → *Open* once.
+> Intel-Mac users should [run from source](#run-from-source).
 
 ## Features
 
@@ -87,6 +90,14 @@ Standards and preferences are stored per user (not next to the executable):
 - Windows: `%APPDATA%\qNMR\qNMR Assistant\`
 - macOS: `~/Library/Application Support/qNMR Assistant/`
 - Linux: `~/.local/share/qNMR Assistant/`
+
+## Code signing
+
+Windows releases will be code-signed once the
+[SignPath Foundation](https://signpath.org) application is approved — free code
+signing provided by [SignPath.io](https://signpath.io), certificate by SignPath
+Foundation. See the [code signing policy](docs/CODE_SIGNING.md) (team, what
+gets signed, build integrity and privacy policy).
 
 ## License & author
 
