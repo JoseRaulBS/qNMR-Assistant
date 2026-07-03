@@ -1,0 +1,6 @@
+# Dependencia de ejecución (lo único que necesita la app para correr)
+PyQt6>=6.11,<6.12
+
+# Herramientas solo para desarrollo / empaquetado (no necesarias en runtime):
+#   pyinstaller   -> construir los ejecutables (ver BUILD.md)
+#   pillow        -> regenerar iconos y splash (assets/make_assets.py)

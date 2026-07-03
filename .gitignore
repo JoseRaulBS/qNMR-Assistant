@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Entornos virtuales
+venv/
+.venv/
+
+# PyInstaller
+build/
+dist/
+
+# IDE
+.vscode/
+.idea/
+
+# Datos de usuario sembrados junto al código por versiones antiguas
+# (la app los guarda en la carpeta de datos del SO, ver paths.py)
+internal_standards.json
+prep_settings.json

@@ -1,0 +1,83 @@
+name: Build & Release
+
+# Construye los ejecutables de Windows, Linux y macOS y, si el disparador es
+# una etiqueta v*, publica una Release con los tres adjuntos.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Scientific formula tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install Qt runtime libs
+        run: sudo apt-get update && sudo apt-get install -y libegl1 libgl1
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run test_formulas.py
+        run: python test_formulas.py
+
+  build:
+    name: Build (${{ matrix.os }})
+    needs: test
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            asset: qNMR_Assistant-windows-x64.exe
+          - os: ubuntu-latest
+            asset: qNMR_Assistant-linux-x64.tar.gz
+          - os: macos-latest
+            asset: qNMR_Assistant-macos-arm64.zip
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install Qt runtime libs (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libegl1 libgl1
+      - name: Install dependencies
+        run: pip install -r requirements.txt pyinstaller
+      - name: Build with PyInstaller
+        run: pyinstaller --noconfirm --clean qNMR_Assistant.spec
+      - name: Package (Windows)
+        if: runner.os == 'Windows'
+        run: Copy-Item dist/qNMR_Assistant.exe "${{ matrix.asset }}"
+      - name: Package (Linux)
+        if: runner.os == 'Linux'
+        run: tar -czf "${{ matrix.asset }}" -C dist qNMR_Assistant
+      - name: Package (macOS)
+        if: runner.os == 'macOS'
+        run: ditto -c -k --keepParent "dist/qNMR Assistant.app" "${{ matrix.asset }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.asset }}
+          path: ${{ matrix.asset }}
+          if-no-files-found: error
+
+  release:
+    name: Publish release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: release-assets
+          merge-multiple: true
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: release-assets/*
+          body_path: .github/release_body.md
