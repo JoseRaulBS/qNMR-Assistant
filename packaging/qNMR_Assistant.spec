@@ -1,25 +1,29 @@
 # -*- mode: python ; coding: utf-8 -*-
 """PyInstaller spec portable (Windows / macOS / Linux).
 
-Construir en CADA sistema (PyInstaller no compila de forma cruzada):
-    cd QuantTool2026_modern
-    pyinstaller --noconfirm --clean qNMR_Assistant.spec
+Construir en CADA sistema (PyInstaller no compila de forma cruzada), desde la
+raíz del repositorio:
+    pyinstaller --noconfirm --clean packaging/qNMR_Assistant.spec
 El ejecutable queda en dist/.
 """
+import os
 import sys
 
+# SPECPATH = carpeta de este archivo (packaging/); el código vive en ../src
+SRC = os.path.abspath(os.path.join(SPECPATH, "..", "src"))
+
 if sys.platform == "win32":
-    icon = "assets/images/AppIcon.ico"
+    icon = os.path.join(SRC, "assets", "images", "AppIcon.ico")
 elif sys.platform == "darwin":
-    icon = "assets/images/AppIcon.icns"
+    icon = os.path.join(SRC, "assets", "images", "AppIcon.icns")
 else:
     icon = None  # Linux: el icono se asocia con un .desktop, no se incrusta
 
 a = Analysis(
-    ["app.py"],
-    pathex=[],
+    [os.path.join(SRC, "app.py")],
+    pathex=[SRC],
     binaries=[],
-    datas=[("assets", "assets")],
+    datas=[(os.path.join(SRC, "assets"), "assets")],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

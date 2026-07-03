@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/images/app_logo.png" width="96" alt="qNMR Assistant logo">
+  <img src="src/assets/images/app_logo.png" width="96" alt="qNMR Assistant logo">
 </p>
 
 <h1 align="center">qNMR Assistant</h1>
@@ -59,7 +59,7 @@ P_x (% w/w) = (I_x / I_IS) · (N_IS / N_x) · (M_x / M_IS) · (m_IS / m_x) · P_
 where `I` are the measured integrals, `N` the number of protons of each signal,
 `M` the molecular weights, `m` the weighed masses and `P_IS` the purity of the
 internal standard. The formulas are validated by the test suite in
-[`test_formulas.py`](test_formulas.py), which runs on every release build.
+[`tests/test_formulas.py`](tests/test_formulas.py), which runs on every release build.
 
 ## Run from source
 
@@ -69,14 +69,14 @@ cd qNMR-Assistant
 python -m venv venv
 # Windows: venv\Scripts\activate   |   macOS/Linux: source venv/bin/activate
 pip install -r requirements.txt
-python app.py
+python src/app.py
 ```
 
 Requires Python ≥ 3.10. The only runtime dependency is PyQt6.
 
 ## Build the executables
 
-See [BUILD.md](BUILD.md). Releases are built automatically by
+See [packaging/BUILD.md](packaging/BUILD.md). Releases are built automatically by
 [GitHub Actions](.github/workflows/release.yml) on Windows, Linux and macOS
 runners whenever a `v*` tag is pushed.
 

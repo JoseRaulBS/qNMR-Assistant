@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run test_formulas.py
-        run: python test_formulas.py
+        run: python tests/test_formulas.py
 
   build:
     name: Build (${{ matrix.os }})
@@ -48,7 +48,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt pyinstaller
       - name: Build with PyInstaller
-        run: pyinstaller --noconfirm --clean qNMR_Assistant.spec
+        run: pyinstaller --noconfirm --clean packaging/qNMR_Assistant.spec
       - name: Package (Windows)
         if: runner.os == 'Windows'
         run: Copy-Item dist/qNMR_Assistant.exe "${{ matrix.asset }}"

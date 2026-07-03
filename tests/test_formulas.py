@@ -34,8 +34,8 @@ try:
 except (AttributeError, io.UnsupportedOperation):
     pass
 
-# Importar model/prefs de esta misma carpeta, se lance desde donde se lance
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# Importar model/prefs desde src/, se lance desde donde se lance
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src"))
 
 import model as model_mod
 from model import Model

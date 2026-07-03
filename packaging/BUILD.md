@@ -14,7 +14,7 @@ pip install pillow                   # solo si vas a regenerar los iconos/splash
 
 ## Regenerar iconos/splash (opcional)
 ```bash
-python assets/make_assets.py
+python src/assets/make_assets.py
 ```
 Crea `splash-image.png`, `app_logo.png`, `AppIcon.ico` (Windows) y `AppIcon.icns` (Mac).
 En Linux se usa `app_logo.png` para el `.desktop`.
@@ -22,7 +22,7 @@ En Linux se usa `app_logo.png` para el `.desktop`.
 ## Construir el ejecutable (igual en los tres SO)
 ```bash
 # desde la raíz del repositorio
-pyinstaller --noconfirm --clean qNMR_Assistant.spec
+pyinstaller --noconfirm --clean packaging/qNMR_Assistant.spec
 ```
 > Las Releases oficiales se construyen automáticamente con GitHub Actions
 > (`.github/workflows/release.yml`) al subir una etiqueta `v*`.

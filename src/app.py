@@ -16,7 +16,9 @@ import style
 def resource_path(relative_path):
     if hasattr(sys, '_MEIPASS'):
         return os.path.join(sys._MEIPASS, relative_path)
-    return os.path.join(os.path.abspath("."), relative_path)
+    # Anclado a la carpeta de este archivo (no al cwd): la app puede lanzarse
+    # desde cualquier directorio con `python src/app.py`.
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)), relative_path)
 
 
 def set_taskbar_app_id():
