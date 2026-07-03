@@ -6,7 +6,8 @@ Cambiar idioma:  I18n.set_language("es")  y luego View.retranslate().
 
 
 class I18n:
-    language = "es"  # idioma por defecto al abrir
+    language = "en"  # idioma por defecto al abrir (la elección del usuario se
+    #                  guarda en QSettings y la restaura View al arrancar)
 
     STRINGS = {
         "en": {

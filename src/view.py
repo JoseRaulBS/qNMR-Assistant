@@ -73,6 +73,11 @@ class View(QMainWindow):
         Standards.load()
         Prefs.load()
 
+        # Restaurar el idioma elegido en sesiones anteriores (def.: inglés)
+        saved_lang = QSettings().value("language")
+        if saved_lang in I18n.STRINGS:
+            I18n.set_language(saved_lang)
+
         self.stacked_apps = QStackedWidget()
         self.prep_page = self._build_preparation_page()
         self.quant_page = self._build_quantitation_page()
@@ -953,6 +958,7 @@ class View(QMainWindow):
 
     def set_language(self, lang):
         I18n.set_language(lang)
+        QSettings().setValue("language", lang)  # recordar entre sesiones
         self.retranslate()
 
     # ==================================================================

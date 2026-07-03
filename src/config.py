@@ -9,7 +9,7 @@ class Config:
     # TEXTOS Y FORMATO
     WindowTitle = "qNMR Assistant 2026"
     app_name = "qNMR Assistant"
-    version = "2026.1"
+    version = "2026.2"
     font = "Segoe UI"  # tipografía moderna (el aspecto general lo define style.py)
     blocks_title_size = 20
     results_size = 30
