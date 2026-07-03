@@ -6,9 +6,7 @@
 
 <p align="center">
   Desktop tool for quantitative <sup>1</sup>H&nbsp;NMR (qNMR): sample-preparation planning and
-  concentration calculation with an internal standard.<br>
-  <em>Herramienta de escritorio para RMN cuantitativa: preparación de muestra y
-  cuantificación con estándar interno. <a href="#español">Documentación en español ↓</a></em>
+  concentration calculation with an internal standard.
 </p>
 
 <p align="center">
@@ -23,14 +21,13 @@
 
 ## Download
 
-Grab the latest build for your system from the
-**[Releases page](https://github.com/JoseRaulBS/qNMR-Assistant/releases/latest)**:
-
-| System | File | How to run |
+| System | Direct download | How to run |
 |---|---|---|
-| Windows 10/11 (64-bit) | `qNMR_Assistant-windows-x64.exe` | Double-click. Portable, no installation. |
-| Linux (x86-64) | `qNMR_Assistant-linux-x64.tar.gz` | `tar -xzf` … then run `./qNMR_Assistant` |
-| macOS (Apple Silicon) | `qNMR_Assistant-macos-arm64.zip` | Unzip → right-click `qNMR Assistant.app` → *Open* |
+| Windows 10/11 (64-bit) | **[qNMR_Assistant-windows-x64.exe](https://github.com/JoseRaulBS/qNMR-Assistant/releases/latest/download/qNMR_Assistant-windows-x64.exe)** | Double-click. Portable, no installation. |
+| Linux (x86-64) | **[qNMR_Assistant-linux-x64.tar.gz](https://github.com/JoseRaulBS/qNMR-Assistant/releases/latest/download/qNMR_Assistant-linux-x64.tar.gz)** | `tar -xzf` … then run `./qNMR_Assistant` |
+| macOS (Apple Silicon) | **[qNMR_Assistant-macos-arm64.zip](https://github.com/JoseRaulBS/qNMR-Assistant/releases/latest/download/qNMR_Assistant-macos-arm64.zip)** | Unzip → right-click `qNMR Assistant.app` → *Open* |
+
+Older versions: see the [Releases page](https://github.com/JoseRaulBS/qNMR-Assistant/releases).
 
 > **Unsigned binaries.** This is academic software and the executables are not
 > code-signed. Windows SmartScreen will ask for *"More info → Run anyway"* the
@@ -95,59 +92,4 @@ Standards and preferences are stored per user (not next to the executable):
 
 [MIT](LICENSE) — created by **José Raúl Belmonte** (2023), unified and updated
 in 2026. Contact: joseraulbs@gmail.com ·
-[github.com/JoseRaulBS](https://github.com/JoseRaulBS)
-
----
-
-<a name="español"></a>
-
-# Español
-
-**qNMR Assistant** es una aplicación de escritorio para **RMN cuantitativa de
-protón (qNMR)** con estándar interno, pensada para el trabajo rutinario de
-laboratorio.
-
-## Descarga
-
-En la **[página de Releases](https://github.com/JoseRaulBS/qNMR-Assistant/releases/latest)**:
-
-| Sistema | Archivo | Cómo ejecutar |
-|---|---|---|
-| Windows 10/11 (64 bits) | `qNMR_Assistant-windows-x64.exe` | Doble clic. Portable, sin instalación. |
-| Linux (x86-64) | `qNMR_Assistant-linux-x64.tar.gz` | `tar -xzf` … y ejecutar `./qNMR_Assistant` |
-| macOS (Apple Silicon) | `qNMR_Assistant-macos-arm64.zip` | Descomprimir → clic derecho en `qNMR Assistant.app` → *Abrir* |
-
-> **Ejecutables sin firmar.** La primera vez, Windows SmartScreen pedirá
-> *"Más información → Ejecutar de todas formas"*; en macOS, clic derecho →
-> *Abrir* (solo una vez). En Macs Intel, ejecutar desde el código fuente.
-
-## Funciones
-
-- **Cuantificación** — qNMR relativa con estándar interno: hasta 10 réplicas
-  con % p/p por réplica, media, desviación estándar y RSD. Con la densidad
-  opcional añade % p/v y g/L.
-- **Asistente de preparación de muestra** — recomienda cuánto estándar interno
-  y cuánta muestra pesar (o pipetear, si es líquida) y genera un protocolo
-  paso a paso.
-- **Editor de estándares internos** — alta y baja de estándares (nombre, PM,
-  protones, pureza, desplazamiento químico), con almacenamiento persistente.
-- **Informe PDF de una página** y **exportación CSV** (compatible con Excel).
-- **Interfaz bilingüe** (español / inglés), conmutable en caliente.
-- Acepta coma o punto decimal; resalta en rojo los campos inválidos.
-
-## Ejecutar desde el código
-
-```bash
-git clone https://github.com/JoseRaulBS/qNMR-Assistant.git
-cd qNMR-Assistant
-python -m venv venv
-# Windows: venv\Scripts\activate   |   macOS/Linux: source venv/bin/activate
-pip install -r requirements.txt
-python app.py
-```
-
-## Licencia y autor
-
-[MIT](LICENSE) — creado por **José Raúl Belmonte** (2023), unificado y
-actualizado en 2026. Contacto: joseraulbs@gmail.com ·
 [github.com/JoseRaulBS](https://github.com/JoseRaulBS)

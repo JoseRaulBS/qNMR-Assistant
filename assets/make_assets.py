@@ -3,7 +3,7 @@
 Imágenes modernas en la paleta blanco -> azul marino. Usa Pillow (no necesita
 pantalla ni Qt). Reejecutar para regenerar:
 
-    & C:/Users/Usuario/qnmr_venv/Scripts/python.exe QuantTool2026_modern/assets/make_assets.py
+    python assets/make_assets.py      # requiere: pip install pillow
 
 Salida (en assets/images):
     splash-image.png   pantalla de inicio (600x340)

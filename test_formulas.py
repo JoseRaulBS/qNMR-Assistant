@@ -19,7 +19,7 @@ Fundamento científico (qNMR relativa con estándar interno):
     P_x (% p/p) = (I_x/I_IS)·(N_IS/N_x)·(M_x/M_IS)·(m_IS/m_x)·P_IS·100
 
 Uso:
-    & C:/Users/Usuario/qnmr_venv/Scripts/python.exe QuantTool2026_modern/test_formulas.py
+    python test_formulas.py
 (se ejecuta desde la raíz del proyecto o desde dentro de la carpeta; añade su
 propio directorio a sys.path para importar model/prefs sin tocar el entorno).
 """
